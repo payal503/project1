@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task 2</title>
+    <style>
+      body{
+        background: url(windows.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+
+      }
+      #box{
+        background: rgba(27, 28, 28, 0.40);
+        padding: 20px;  
+        color: #fff;
+
+      }
+      input{
+        /* background: -webkit-linear-gradient(left, #429baf, #56b0c8); */
+        border-top-right-radius: 5% 51%;
+      }
+      select{
+        /* background: -webkit-linear-gradient(left, #429baf, #56b0c8); */
+        border-top-right-radius: 5% 51%;
+      }
+      label{
+        text-shadow: 0 2px 4px skyblue;
+      }
+      fieldset{
+        border-radius: 10%;
+      }
+      button{
+        /* background: -webkit-linear-gradient(left, #429baf, #00c6ff); */
+        /* border-top-right-radius: 5% 51%; */
+        border-radius: 1rem;
+        border: none;
+        height: 30px;
+        width: 80px;
+        box-shadow: 0 2px 4px 0 skyblue;
+      }
+      button:hover{
+        background-color: #429baf;
+      }
+    </style>
+</head>
+
+<body>
+    <fieldset style="width:50%;margin-left: 40px;margin-top: 40px;height: 400px;box-shadow: 0 4px 8px 0 skyblue;" id="box">
+        <legend align="left">
+            <fieldset style="box-shadow:0 2px 3px 0 silver">
+                <b style="text-shadow: 0 2px 4px 0 skyblue;">Registration Form</b>
+            </fieldset>
+        </legend>
+        <form action="welcome.html" onsubmit="return validate()"></form>
+        <table align="center">
+            <tr>
+                <td><label>Name : </label></td>
+                <td><input onkeyup="unameValidation()" type="text" id="name"  name="name" placeholder="Enter Name" id="input">
+                    <span id="nameside" style="color:red">*</span>
+                </td>
+            </tr><br><tr></tr><tr></tr>
+            <tr>
+                <td><label>Email : </label> </td>
+                <td><input onkeyup="emailValidation()" type="Email" id="email" name="email" placeholder="Enter Email">
+                    <span id="emailside" style="color:red">*</span>
+                </td>
+            </tr><tr></tr><tr></tr>
+            <tr>
+                <td><label>Password : </label></td>
+                <td><input onkeyup="pswdValidation()" type="password" id="pid" name="password"
+                        placeholder="Enter password">
+                    <span id="pswdside" style="color:red">*</span>
+                </td>
+            </tr><tr></tr><tr></tr>
+            <tr>
+                <td><label>Confirm Password : </label></td>
+                <td><input onkeyup="cpswdValidation()" type="password" id="cpid" name="cpassword"
+                        placeholder="confirm password">
+                    <span id="Confirm" style="color:red">*</span>
+                </td>
+            </tr><tr></tr><tr></tr>
+            <tr>
+                <td><label>Qualification : </label></td>
+                <td><select onchange="qValidation()" required name="select" id="qid">
+                        <option value="">Option</option>
+                        <option value="UG">UG</option>
+                        <option value="PG">PG</option>
+                        <option value="PHD">PHD</option>
+                    </select>
+                    <span id="qside" style="color:red">*</span>
+                </td>
+            </tr><tr></tr><tr></tr>
+            <tr>
+                <td><label>Gender : </label></td>
+                <td><input checked type="radio" id="Male" name="Type" value="Male">
+                    <label for="Male">Male</label>
+                    <input checked type="radio" id="Female" name="Type" value="Female">
+                    <label for="Female">Female</label>
+                    <span id="cpswdside" style="color:red">*</span>
+                </td>
+
+            </tr><tr></tr><tr></tr>
+            <tr>
+                <td><label>Hobbies : </label></td>
+                <td><input checked type="checkbox" id="Singing" name="singing">
+                    <label for="Singing">Singing</label>
+                    <input checked type="checkbox" id="Dancing" name="Dancing">
+                    <label for="Dancing">Dancing</label>
+                    <input checked type="checkbox" id="Sketching" name="Sketching">
+                    <label for="Sketching">Sketching</label>
+                    <input checked type="checkbox" id="Painting" name="Painting">
+                    <label for="Painting">Painting</label>
+                </td>
+            </tr><tr></tr><tr></tr>
+            <tr>
+                <td><label>Upload Picture</label></td>
+                <td><input type="file" id="upid" name="file1" placeholder="pdf"></td>
+            </tr><tr></tr><tr></tr>
+            <tr>
+                <td><input class="form-check-input" type="checkbox" id="hello" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2"> Term & Condition</label>
+                </td>
+            </tr><tr></tr><tr></tr>
+            <tr>
+                <td><button type="submit" value="Submit">Submit</button></td>
+            </tr>
+
+        </table>
+    </fieldset>
+    <script>
+        // ---------------------------------------------------------------------
+        function unameValidation() {
+            var uName = document.getElementById("name");
+            if (uName.value.trim() == ""){
+
+                nameside.innerHTML = "Name Required";
+                return false;
+
+            }
+            else {
+
+                nameside.innerHTML = "";
+                return true;
+
+            }     
+               
+        }
+        // --------------------------------------------------------------------
+        function emailValidation() {
+            var Email = document.getElementById("email");
+            if (Email.value.trim() == "") {
+
+                emailside.innerHTML = "Email Required";
+                return false;
+            }
+            else {
+                emailside.innerHTML = "";
+                return true;
+            }
+        }
+        // -----------------------------------------------------------------------------------
+        function pswdValidation() {
+            var pswd = document.getElementById("pid");
+            if (pswd.value.trim() == "") {
+
+                pswdside.innerHTML = "Password Required";
+                return false;
+            }
+            else {
+
+                pswdside.innerHTML = "";
+                return true;
+            }
+        }
+        // -------------------------------------------------------------------------------------
+        function cpswdValidation() {
+            var cpswd = document.getElementById("cpid");
+            if (cpswd.value.trim() == "") {
+
+                Confirm.innerHTML = "Password Required";
+                return false;
+            }
+            else {
+
+                Confirm.innerHTML = "";
+                return true;
+            }
+        }
+        // -------------------------------------------------------------------------------------
+        function qValidation() {
+            var Qualification = document.getElementById("qid");
+            //var sdisplay = document.getElementById("sdisplay");
+            if (Qualification.selectedIndex == 0) {
+                qside.innerHTML = "field Required";
+                return false;
+            }
+            else {
+                qside.innerHTML = "";
+                return true;
+            }
+        }
+        //--------------------------------------------------------------------------------------
+        function termconValidation() {
+            var tc = document.getElementById("hello");
+            if (tc.value == 0) {
+                return false;
+            }
+            else
+                return true;
+        }
+        //----------------------------------------------------------------------------------------
+        function validate() {
+            var usernamestatus = unameValidation();
+            var emailstatus = emailValidation();
+            var passwordstatus = pswdValidation();
+            var confirmationstatus = cpswdValidation();
+            var qualificationstatus = qValidation();
+            var tcstatus = termconValidation();
+            var nameside = document.getElementById("nameside");
+            var emailside = document.getElementById("emailside");
+            var pswdside = document.getElementById("pswdside");
+            var Confirm = document.getElementById("Confirm");
+            var qside = document.getElementById("qside");
+            // var tc = alert("Please fill the term condtion field");
+
+            if (usernamestatus === false) {
+                if (emailstatus == false)
+                    emailside.innerHTML = "*";
+                if (passwordstatus == false)
+                    pswdside.innerHTML = "*";
+                if (confirmationstatus == false)
+                    Confirm.innerHTML = "*";
+                if (qualificationstatus == false)
+                    qside.innerHTML = "*";
+                if (tcstatus == false)
+                    alert("Please fill the term and condtion field");
+                return false;
+            }
+            else if (emailstatus == false) {
+                if (passwordstatus == false)
+                    pswdside.innerHTML = "*";
+                if (confirmationstatus == false)
+                    Confirm.innerHTML = "*";
+                if (qualificationstatus == false)
+                    qside.innerHTML = "*";              
+                if (tcstatus == false)
+                    alert("Please fill the term and condtion field");
+                return false;
+            }
+            else if (passwordstatus == false) {
+                if (confirmationstatus == false)
+                    Confirm.innerHTML = "*";
+                if (qualificationstatus == false)
+                    qside.innerHTML = "*";
+                if (tcstatus == false)
+                    alert("Please fill the term condtion field");
+                return false;
+            }
+            else if (confirmationstatus == false){
+                 if (qualificationstatus == false)
+                     qside.innerHTML = "*";
+                 if (tcstatus == false)
+                    alert("Please fill the term condtion field");
+                   return false;
+            }
+
+          else if (qualificationstatus == false){
+               if (tcstatus == false)
+                    alert("Please fill the term condtion field");
+                return false;
+          }
+
+            else if (tcstatus == false)
+                return false;
+        }
+    </script>
+</body>
+
+</html>
